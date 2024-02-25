@@ -1,6 +1,7 @@
 package com.example.networkplanning
 
 import android.util.Log
+import androidx.annotation.VisibleForTesting
 import dev.bandb.graphview.graph.Node
 
 interface INetworkPlanning {
@@ -53,7 +54,8 @@ interface INetworkPlanning {
 //}
 
 object GraphBuilder {
-    private var dataset: MutableList<Work> = mutableListOf()
+    @VisibleForTesting
+    var dataset: MutableList<Work> = mutableListOf()
 
     val nodes: MutableList<Node> = mutableListOf()
     val myEdges:MutableList<MyEdge> = mutableListOf()
@@ -123,7 +125,8 @@ object GraphBuilder {
     }
 
     // превращаем все моменты типа (b4,b7),(b5,b7) в b7,(b4,b7),(b5,b7) для корректной обработки далее
-    private fun processVertex() {
+    @VisibleForTesting
+    fun processVertex() {
         for (i in dataset.indices) {
             for (j in i until dataset.size) {//ищем пересечения множеств, если оно не равно 0 и его нет, то добавляем событие
                 val intersect = dataset[i].requiredWorks.intersect(dataset[j].requiredWorks.toSet())
@@ -136,7 +139,7 @@ object GraphBuilder {
         }
     }
 
-    private fun addListedWorks() {
+    fun addListedWorks() {
         for (i in dataset.indices) {
             myEdges.add(
                 MyEdge(
@@ -175,9 +178,8 @@ object GraphBuilder {
     //добаить фиктивные работы по принципу
     //проверяем все вершины на предмет того, что в них входит, если каждая из работ, то скип
     //если не все, то ищем нужные вершины и проводим линию с 0 duration
-    private fun addDummyWorks() {
+    fun addDummyWorks() {
         for (node in nodes) {
-            Log.d("GB2dummy", "${node.works.toStr()}")
             if (node.works.size == myEdges.filter { it.dst == node.works }.size) {
                 continue
             }
