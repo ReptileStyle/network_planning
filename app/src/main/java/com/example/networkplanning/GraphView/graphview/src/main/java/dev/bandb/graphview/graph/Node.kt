@@ -1,10 +1,10 @@
 package dev.bandb.graphview.graph
 
-import com.example.projectmanager.ui.renameme.Work
+import com.example.networkplanning.Work
 import dev.bandb.graphview.util.Size
 import dev.bandb.graphview.util.VectorF
 
-data class Node(var data: Any, var completedWorks: Set<Int> = setOf(),var works: List<Work> = listOf(),var moveX:Float=0f,var moveY:Float=0f) {
+data class Node(var data: Any, var completedWorks: Set<Int> = setOf(), var works: List<Work> = listOf(), var moveX:Float=0f, var moveY:Float=0f) {
     // TODO make private
     val position: VectorF = VectorF()
     val size: Size = Size()

@@ -247,14 +247,13 @@ class GraphCalculations2(
     }
 
 
-
     init {
     }
 }
 
 
 data class PlotInfo(
-    val days:Int =0,
-    val cost:Int =0,
-    val investmentMap:Map<String,Int> = mapOf()
+    val days: Int = 0,
+    val cost: Int = 0,
+    val investmentMap: Map<String, Int> = mapOf()
 )

@@ -3,10 +3,10 @@ package com.example.networkplanning
 
 data class Work(
     val name: String, val duration: Int? = null, val requiredWorks: MutableList<Work>,
-    var durationPessimistic:Int?=null,
-    var durationOptimistic:Int?=null,
+    var durationPessimistic: Int? = null,
+    var durationOptimistic: Int? = null,
     val costToSpeedUp: Int? = null,
-    var invested:Int = 0
+    var invested: Int = 0
 ) {
 //    val requiredWorks=requiredWorks.toMutableList()
 
